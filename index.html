@@ -55,6 +55,7 @@ th,td{text-align:left;vertical-align:top;padding:12px 14px;border-bottom:1px sol
 th{font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700;background:var(--bg)}
 tr:last-child td{border-bottom:0}
 td:first-child{font-weight:700}
+td.cifra{font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:700;color:var(--azul)}
 .num{font-variant-numeric:tabular-nums}
 /* Barra de población */
 .pop{display:grid;gap:14px}
@@ -117,9 +118,9 @@ footer{border-top:1px solid var(--line);padding-block:22px;color:var(--muted);fo
   <div class="wrap">
     <div class="eyebrow">Universidad San Sebastián · Facultad de Educación</div>
     <h1>Programa Advance de Pedagogía en Educación Básica</h1>
-    <div class="sub">Perfil de egreso, perfil de ingreso y duración</div>
+    <div class="sub">Perfil de egreso, perfil de ingreso y malla</div>
     <p class="lead">Documento de trabajo del equipo de levantamiento. Presenta el perfil de egreso con sello ODS y las alternativas de perfil de ingreso, construidas a partir de tres avatares de la población potencial.</p>
-    <div class="ask"><strong>Decisión pendiente</strong>Definir qué avatar o avatares conformarán el perfil de ingreso. De esa definición dependen la duración del programa y la estructura de la malla. El perfil de egreso es común para todas las trayectorias.</div>
+    <div class="ask"><strong>Decisión pendiente</strong>Definir qué avatar o avatares conformarán el perfil de ingreso. El programa dura 2 años en todos los casos; lo que cambia según el avatar es qué asignaturas de la malla debe cursar cada estudiante y cuáles pueden reconocerse según la evidencia de entrada.</div>
   </div>
 </header>
 
@@ -128,7 +129,7 @@ footer{border-top:1px solid var(--line);padding-block:22px;color:var(--muted);fo
     <a href="#bases"><span>01</span>Bases del diseño</a>
     <a href="#egreso"><span>02</span>Perfil de egreso</a>
     <a href="#avatares"><span>03</span>Avatares de ingreso</a>
-    <a href="#opciones"><span>04</span>Opciones y duración</a>
+    <a href="#opciones"><span>04</span>Opciones y malla</a>
     <a href="#implicancias"><span>05</span>Implicancias</a>
     <a href="#preguntas"><span>06</span>Decisiones</a>
   </div>
@@ -169,13 +170,12 @@ footer{border-top:1px solid var(--line);padding-block:22px;color:var(--muted);fo
         <tr><td>5. Ejercer la profesión docente de manera ética, reflexiva y colaborativa, contribuyendo al aprendizaje y al mejoramiento de la comunidad educativa.</td><td>9. Actuar ética y profesionalmente.<br>10. Colaborar con la comunidad educativa.</td></tr>
       </tbody>
     </table></div>
-    <p class="note">Pendiente: definir cómo se evidencia el sello ODS en los indicadores de cada desempeño.</p>
   </section>
 
   <section id="avatares">
     <div class="tag">Vista 03</div>
     <h2>Tres avatares de ingreso</h2>
-    <p>Seis de cada diez personas de la población potencial son docentes de otra especialidad o nivel. Los tres avatares suman el 93,3 % de los casos revisados; el 6,7 % restante no está caracterizado.</p>
+    <p>Seis de cada diez personas de la población potencial son docentes de otra especialidad o nivel. Los tres avatares suman el 93,3 %; el 6,7 % restante no está caracterizado.</p>
     <div class="pop">
       <div class="bar" role="img" aria-label="Distribución de la población potencial: avatar 1, 60 %; avatar 2, 22 %; avatar 3, 11,3 %; sin caracterizar, 6,7 %">
         <div class="b1">Avatar 1 · 60 %</div><div class="b2">22 %</div><div class="b3">11,3 %</div><div class="b4"></div>
@@ -191,36 +191,41 @@ footer{border-top:1px solid var(--line);padding-block:22px;color:var(--muted);fo
 
   <section id="opciones">
     <div class="tag">Vista 04</div>
-    <h2>Opciones de perfil de ingreso, duración y malla</h2>
-    <p>La duración depende de cuánta formación pedagógica traen quienes ingresan. La UDD, dirigida a docentes ya formados, dura 2 años; la UMCE, dirigida a profesionales que ejercen sin formación pedagógica, dura 3 años. Ambas son b-learning y otorgan Licenciatura en Educación y título de Profesor/a de Educación Básica.</p>
-    <p class="note">Las duraciones son referencias para la discusión, no cálculos de créditos; deben contrastarse con la matriz normativa y la factibilidad USS.</p>
+    <h2>Opciones de perfil de ingreso y malla</h2>
+    <p>La malla dura 2 años y tiene dos modelos: semestral (4 semestres, 16 asignaturas, 112 créditos) y trimestral (6 trimestres, 18 asignaturas, 108 créditos). Para cada avatar, la malla distingue las asignaturas prioritarias a cursar de las que pueden reconocerse o revisarse según la evidencia de entrada.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Avatar</th><th>Prioritarias, semestral</th><th>Prioritarias, trimestral</th><th>Foco de lo que cursa</th></tr></thead>
+      <tbody>
+        <tr><td>1. Docente de otra especialidad o nivel</td><td class="cifra">7 de 16</td><td class="cifra">8 de 18</td><td>Desarrollo y aprendizaje en 1° a 6° básico, fundamentos y didáctica de las cuatro áreas, investigación e innovación y práctica final.</td></tr>
+        <tr><td>2. Profesional o licenciado disciplinar</td><td class="cifra">14 de 16</td><td class="cifra">15 de 18</td><td>Casi toda la malla; puede reconocerse Matemática e Investigación e innovación.</td></tr>
+        <tr><td>3. Profesional del campo educativo afín</td><td class="cifra">11 de 16</td><td class="cifra">12 de 18</td><td>Didácticas de las cuatro áreas, planificación, evaluación, gestión del aula y prácticas desde la II.</td></tr>
+      </tbody>
+    </table></div>
+    <p>Proponemos tres opciones para la discusión, sin descartar otra alternativa que se estime más pertinente.</p>
     <div class="opciones">
       <article class="op">
         <div class="letra">Opción A</div>
         <h3>Ingreso amplio</h3>
         <div class="cover"><div class="track"><i style="flex:60;background:var(--navy)"></i><i style="flex:22;background:var(--azul)"></i><i style="flex:11.3;background:var(--dorado)"></i><i style="flex:6.7"></i></div><small>Avatares 1, 2 y 3 · 93,3 % de la población</small></div>
-        <dl><div><dt>Duración de referencia</dt><dd>Diferenciada: 2 años para quienes ya tienen formación pedagógica; hasta 3 años para el avatar 2.</dd></div><div><dt>Malla</dt><dd>Tronco común, reconocimiento de aprendizajes previos y módulos de nivelación pedagógica y clínica para el avatar 2.</dd></div><div><dt>Ventajas</dt><dd>Mayor cobertura regional; responde también a quienes ejercen con habilitación sin título pedagógico.</dd></div>
-        <div><dt>Exigencias</dt><dd>Diagnóstico robusto, reconocimiento de aprendizajes previos y tres trayectorias; mayor complejidad de gestión y costos.</dd></div>
-        <div><dt>Referente</dt><dd>Combina rasgos de UMCE y UDD.</dd></div></dl>
+        <dl><div><dt>Malla</dt><dd>Una malla de 2 años con tres trayectorias: de 7 a 14 asignaturas prioritarias (modelo semestral) según el avatar.</dd></div>
+        <div><dt>Principal riesgo</dt><dd>Mayor complejidad de diagnóstico, reconocimiento y gestión de trayectorias.</dd></div></dl>
       </article>
       <article class="op">
         <div class="letra">Opción B</div>
         <h3>Focalizado en docentes</h3>
         <div class="cover"><div class="track"><i style="flex:60;background:var(--navy)"></i><i style="flex:40"></i></div><small>Avatar 1 · 60 % de la población</small></div>
-        <dl><div><dt>Duración de referencia</dt><dd>2 años (referente UDD).</dd></div><div><dt>Malla</dt><dd>Malla única centrada en lo propio de Básica: didácticas de las cuatro áreas, práctica y sello ODS.</dd></div><div><dt>Ventajas</dt><dd>Construye sobre una formación pedagógica existente; trayectoria más corta y homogénea.</dd></div>
-        <div><dt>Exigencias</dt><dd>Deja fuera a quienes ejercen con habilitación sin título pedagógico.</dd></div>
-        <div><dt>Referente</dt><dd>UDD: docentes de Media, Diferencial o Parvularia; 2 años, b-learning.</dd></div></dl>
+        <dl><div><dt>Malla</dt><dd>Una sola trayectoria, con 7 de 16 asignaturas prioritarias.</dd></div>
+        <div><dt>Principal riesgo</dt><dd>Deja fuera a quienes ejercen con habilitación sin título pedagógico.</dd></div></dl>
       </article>
       <article class="op">
         <div class="letra">Opción C</div>
         <h3>Docentes y campo educativo afín</h3>
         <div class="cover"><div class="track"><i style="flex:60;background:var(--navy)"></i><i style="flex:22"></i><i style="flex:11.3;background:var(--dorado)"></i><i style="flex:6.7"></i></div><small>Avatares 1 y 3 · 71,3 % de la población</small></div>
-        <dl><div><dt>Duración de referencia</dt><dd>2 años, con nivelación disciplinar-didáctica para el avatar 3 por dimensionar.</dd></div><div><dt>Malla</dt><dd>Malla única con trayectoria de refuerzo disciplinar.</dd></div><div><dt>Ventajas</dt><dd>Población con experiencia educativa; dos trayectorias.</dd></div>
-        <div><dt>Exigencias</dt><dd>Excluye al avatar 2, que requiere la mayor intensidad pedagógica y clínica.</dd></div>
-        <div><dt>Referente</dt><dd>Intermedia entre UMCE y UDD.</dd></div></dl>
+        <dl><div><dt>Malla</dt><dd>Dos trayectorias, con 7 y 11 de 16 asignaturas prioritarias.</dd></div>
+        <div><dt>Principal riesgo</dt><dd>Excluye al avatar 2, que cursa casi toda la malla.</dd></div></dl>
       </article>
     </div>
-    <p class="note">Referentes internacionales: el Graduate Diploma in Teaching (Primary) de la University of Auckland y el Master of Teaching (Primary) de la University of Melbourne, este último de 2 años a tiempo completo, están dirigidos a graduados e integran el estudio académico con presencia sostenida en escuelas y formación clínica.</p>
+    <p class="note">Referentes revisados: UDD (2 años, b-learning, para docentes ya formados), UMCE (3 años, b-learning, para quienes ya ejercen desde otras áreas profesionales), University of Auckland y University of Melbourne (programas para graduados con formación clínica y presencia sostenida en escuelas).</p>
   </section>
 
   <section id="implicancias">
@@ -246,15 +251,15 @@ footer{border-top:1px solid var(--line);padding-block:22px;color:var(--muted);fo
     <div class="tbl"><table>
       <thead><tr><th>Decisión</th><th>Alternativas</th></tr></thead>
       <tbody>
-        <tr><td>Avatar o avatares del perfil de ingreso</td><td>A (avatares 1, 2 y 3), B (avatar 1) o C (avatares 1 y 3)</td></tr>
-        <tr><td>Duración del programa</td><td>2 años, 3 años o diferenciada por trayectoria</td></tr>
+        <tr><td>Avatar o avatares del perfil de ingreso</td><td>A (avatares 1, 2 y 3), B (avatar 1), C (avatares 1 y 3) u otra alternativa</td></tr>
+        <tr><td>Modelo de la malla</td><td>Semestral (4 semestres) o trimestral (6 trimestres)</td></tr>
         <tr><td>Perfil de egreso con sello ODS</td><td>Aprobar tal como está o ajustar</td></tr>
         <tr><td>Criterios institucionales a considerar</td><td>Admisión, modalidad, créditos u otros</td></tr>
       </tbody>
     </table></div>
     <h3 style="font-size:20px;margin-top:8px">Próximos pasos</h3>
     <ul class="pasos">
-      <li>Fijar la duración del programa y elaborar la malla conforme a los avatares definidos: tronco común, reconocimiento de aprendizajes previos y módulos de nivelación cuando corresponda.</li>
+      <li>Definir el modelo de la malla (semestral o trimestral) y ajustar las asignaturas prioritarias de cada avatar definido.</li>
       <li>Cerrar la matriz normativa y el análisis de factibilidad (carga, modalidad, práctica, dotación y costos).</li>
       <li>Diseñar el diagnóstico de entrada y el protocolo de reconocimiento de aprendizajes previos, con evidencias, umbrales y rúbricas comunes.</li>
       <li>Definir los indicadores que evidencian el sello ODS en cada desempeño.</li>
