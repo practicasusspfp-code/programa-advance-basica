@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Programa Advance Educación Básica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caladea:ital,wght@0,400;0,700;1,400&family=Carlito:wght@400;700&display=swap">
+<style>
+/* Layout: informe institucional en una columna, encabezado navy, navegación por vistas numeradas y secciones apiladas */
+:root{
+  --navy:#0f2a4a; --azul:#1f5fa8; --dorado:#b8912f; --dorado-suave:#f3ead3;
+  --bg:#f6f7f9; --surface:#ffffff; --fg:#17202b; --muted:#5a6676; --line:#dfe3ea;
+  --hero-fg:#ffffff; --hero-muted:#c9d4e3;
+  --good:#2e7d4f; --warn:#b26a00;
+  --display:Cambria,"Caladea",Georgia,serif; --body:Calibri,"Carlito","Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --navy:#0b1d33; --azul:#7fb0ea; --dorado:#d9b45a; --dorado-suave:#3a3120;
+  --bg:#0f141b; --surface:#171e28; --fg:#e7ecf2; --muted:#9aa7b8; --line:#2a3443;
+  --hero-fg:#f2f5f9; --hero-muted:#a9b8cc; --good:#6cc492; --warn:#e3a54a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --navy:#0b1d33; --azul:#7fb0ea; --dorado:#d9b45a; --dorado-suave:#3a3120;
+  --bg:#0f141b; --surface:#171e28; --fg:#e7ecf2; --muted:#9aa7b8; --line:#2a3443;
+  --hero-fg:#f2f5f9; --hero-muted:#a9b8cc; --good:#6cc492; --warn:#e3a54a; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.55}
+.wrap{max-width:960px;margin:0 auto;padding-inline:20px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
+p{margin:0}
+.hero{background:var(--navy);color:var(--hero-fg);padding-block:40px 36px;border-bottom:4px solid var(--dorado)}
+.eyebrow{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--hero-muted)}
+.hero h1{font-size:clamp(30px,5vw,46px);line-height:1.1;margin-top:14px}
+.hero .sub{font-family:var(--display);font-style:italic;font-size:20px;color:var(--dorado);margin-top:6px}
+.hero .lead{max-width:66ch;margin-top:18px;color:var(--hero-fg)}
+.meta{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:22px;font-size:14px;color:var(--hero-muted)}
+.ask{margin-top:26px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-left:4px solid var(--dorado);padding:16px 18px;border-radius:4px;max-width:70ch}
+.ask strong{color:var(--dorado);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:13px;display:block;margin-bottom:4px}
+nav.vistas{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.vistas .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+nav.vistas a{flex:0 0 auto;padding:12px 12px 10px;text-decoration:none;color:var(--muted);font-size:15px;border-bottom:3px solid transparent;white-space:nowrap}
+nav.vistas a span{font-variant-numeric:tabular-nums;color:var(--dorado);font-weight:700;margin-right:6px;font-size:13px}
+nav.vistas a:hover,nav.vistas a.on{color:var(--fg);border-bottom-color:var(--azul)}
+nav.vistas a:focus-visible{outline:2px solid var(--azul);outline-offset:-2px}
+main{display:grid;gap:56px;padding-block:44px 64px}
+section{scroll-margin-top:64px;display:grid;gap:18px;min-width:0}
+.tag{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--dorado);font-weight:700}
+section h2{font-size:clamp(24px,3.4vw,32px);color:var(--fg)}
+section > p{max-width:68ch}
+.muted{color:var(--muted)}
+.principio{font-family:var(--display);font-size:clamp(20px,2.6vw,25px);line-height:1.35;color:var(--azul);border-left:3px solid var(--dorado);padding-left:18px;max-width:52ch}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:15.5px}
+th,td{text-align:left;vertical-align:top;padding:12px 14px;border-bottom:1px solid var(--line)}
+th{font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:700}
+.num{font-variant-numeric:tabular-nums}
+/* Barra de población */
+.pop{display:grid;gap:14px}
+.bar{display:flex;height:46px;border-radius:4px;overflow:hidden;border:1px solid var(--line)}
+.bar div{display:flex;align-items:center;padding-inline:10px;font-weight:700;font-variant-numeric:tabular-nums;font-size:15px;white-space:nowrap;min-width:0;overflow:hidden}
+.b1{background:var(--navy);color:#fff;flex:60}
+.b2{background:var(--azul);color:#fff;flex:22}
+.b3{background:var(--dorado);color:#1b1505;flex:11.3}
+.b4{background:var(--line);color:var(--muted);flex:6.7}
+.avatares{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.av{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:18px;display:grid;gap:8px;align-content:start}
+.av .pct{font-family:var(--display);font-size:38px;line-height:1;font-variant-numeric:tabular-nums}
+.av:nth-child(1) .pct{color:var(--navy)} .av:nth-child(2) .pct{color:var(--azul)} .av:nth-child(3) .pct{color:var(--dorado)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .av:nth-child(1) .pct{color:var(--fg)}}
+:root[data-theme="dark"] .av:nth-child(1) .pct{color:var(--fg)}
+.av h3{font-size:19px}
+.av .need{font-size:15px;color:var(--muted);border-top:1px solid var(--line);padding-top:8px}
+.note{font-size:14.5px;color:var(--muted);max-width:70ch}
+/* Opciones */
+.opciones{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.op{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:20px;display:grid;gap:12px;align-content:start}
+.op.actual{border:2px solid var(--dorado)}
+.op .letra{font-family:var(--display);font-size:15px;color:var(--muted)}
+.op h3{font-size:21px}
+.pill{justify-self:start;font-size:12px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--dorado-suave);color:var(--fg)}
+.cover{display:grid;gap:6px}
+.cover .track{display:flex;height:10px;border-radius:999px;overflow:hidden;background:var(--line)}
+.cover .track i{display:block}
+.cover small{font-size:14px;color:var(--muted)}
+.op dl{display:grid;gap:8px;margin:0;font-size:15px}
+.op dt{font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.op dd{margin:0}
+/* Flujo */
+.flujo{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:24px 18px;display:grid;justify-items:center;gap:0}
+.fila{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;width:100%}
+.nodo{border:1px solid var(--muted);border-radius:6px;padding:10px 16px;text-align:center;font-size:15.5px;background:var(--surface);max-width:100%}
+.nodo b{display:block;font-family:var(--display);font-size:16px}
+.nodo.meta-final{border:2px solid var(--dorado);background:var(--dorado-suave);font-weight:700}
+.flecha{color:var(--muted);font-size:20px;line-height:1;padding-block:6px}
+.flecha small{font-size:13px;margin-left:6px}
+.estado{font-size:12.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 8px;border-radius:999px;white-space:nowrap;border:1px solid currentColor}
+.ok{color:var(--good)} .parcial{color:var(--warn)}
+/* Preguntas */
+ol.preguntas{margin:0;padding:0;list-style:none;display:grid;gap:14px;counter-reset:q}
+ol.preguntas li{counter-increment:q;display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px 18px;font-size:17.5px}
+ol.preguntas li::before{content:counter(q);font-family:var(--display);font-size:30px;line-height:1;color:var(--dorado)}
+ul.pasos{margin:0;padding-left:20px;display:grid;gap:6px;max-width:68ch}
+blockquote.perfil{margin:0;font-family:var(--display);font-size:clamp(18px,2.3vw,21px);line-height:1.5;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--azul);padding:20px 22px;border-radius:4px;max-width:72ch}
+blockquote.perfil mark{background:var(--dorado-suave);color:inherit;padding:0 2px}
+.sellos{display:flex;flex-wrap:wrap;gap:8px}
+.sellos span{font-size:14px;padding:5px 12px;border-radius:999px;border:1px solid var(--dorado);color:var(--fg);background:var(--surface)}
+footer{border-top:1px solid var(--line);padding-block:22px;color:var(--muted);font-size:14px}
+@media (max-width:760px){.avatares,.opciones{grid-template-columns:1fr}.bar div{font-size:13px;padding-inline:6px}}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+<style>body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Universidad San Sebastián · Facultad de Educación · Sede Patagonia</div>
+    <h1>Programa Advance de Pedagogía en Educación Básica</h1>
+    <div class="sub">Perfil de egreso, perfil de ingreso y duración</div>
+    <p class="lead">Documento de trabajo del equipo de levantamiento. Sintetiza la ruta de diseño ADDIE (versión del 16 de septiembre de 2026), presenta el perfil de egreso con sello ODS y las alternativas de perfil de ingreso, construidas a partir de tres avatares de la población potencial.</p>
+    <div class="meta"><span>Apertura: marzo 2028</span><span>Propuesta completa: junio 2027</span><span>Octubre 2026</span></div>
+    <div class="ask"><strong>Decisión pendiente</strong>Definir qué avatar o avatares conformarán el perfil de ingreso. De esa definición dependen la duración del programa y la estructura de la malla. El perfil de egreso es común para todas las trayectorias.</div>
+  </div>
+</header>
+
+<nav class="vistas" aria-label="Secciones del documento">
+  <div class="wrap">
+    <a href="#bases"><span>01</span>Bases del diseño</a>
+    <a href="#egreso"><span>02</span>Perfil de egreso</a>
+    <a href="#avatares"><span>03</span>Avatares de ingreso</a>
+    <a href="#opciones"><span>04</span>Opciones y duración</a>
+    <a href="#implicancias"><span>05</span>Implicancias</a>
+    <a href="#preguntas"><span>06</span>Decisiones</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <section id="bases">
+    <div class="tag">Vista 01</div>
+    <h2>Bases del diseño</h2>
+    <p class="principio">El Advance no diferencia el estándar de egreso; diferencia el trayecto necesario para alcanzarlo.</p>
+    <p>La experiencia previa orienta hipótesis sobre lo que cada persona trae, pero el dominio se reconoce solo cuando se demuestra con evidencia. El diseño avanza con ADDIE: Preparación, Análisis y Diseño están desarrollados; Desarrollo, Implementación y Evaluación comenzarán una vez validada la arquitectura de Diseño.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Fuente</th><th>Aporte al diseño</th></tr></thead>
+      <tbody>
+        <tr><td>Estándares de la Profesión Docente EGB 2023</td><td>Referente común de egreso: 12 estándares pedagógicos y estándares disciplinares en Lenguaje (6), Matemática (5), Ciencias Naturales (6) e Historia, Geografía y Ciencias Sociales (4).</td></tr>
+        <tr><td>Modelo de Formación Docente USS 2025</td><td>Práctica como eje articulador, Prácticas Pedagógicas Esenciales (PPE), práctica deliberada con retroalimentación, uso de evidencia y progresión.</td></tr>
+        <tr><td>Autorizaciones docentes (Valdivia 2024, 150 personas; Llanquihue, 1.635 autorizaciones 2018-2021)</td><td>Evidencia para construir los avatares de ingreso y las hipótesis de brechas.</td></tr>
+        <tr><td>Educación para los ODS (UNESCO)</td><td>Sello formativo: sostenibilidad, ciudadanía, inclusión, territorio, transformación y resiliencia.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="egreso">
+    <div class="tag">Vista 02</div>
+    <h2>Perfil de egreso con sello ODS</h2>
+    <p>El perfil de egreso es único para todas las personas que ingresen, cualquiera sea su avatar. Integra los Estándares de la Profesión Docente 2023, el Modelo de Formación Docente USS y el sello de Educación para los ODS.</p>
+    <blockquote class="perfil">El egresado demuestra que es capaz de comprender a sus estudiantes y sus contextos; movilizar conocimiento disciplinar, didáctico y curricular propio de la Educación Básica; planificar, implementar, evaluar y ajustar procesos de enseñanza y aprendizaje; promover ambientes inclusivos, pensamiento profundo y desarrollo integral; y analizar críticamente su propia práctica, actuando de manera ética, colaborativa y comprometida con la mejora continua, <mark>integrando una perspectiva de sostenibilidad, ciudadanía, diversidad cultural y compromiso con el territorio, que le permita contribuir a la formación de estudiantes capaces de comprender y actuar frente a desafíos locales y globales.</mark></blockquote>
+    <p>Todo egresado debe demostrar, además, dominio disciplinar y didáctico suficiente en Lenguaje, Matemática, Ciencias Naturales e Historia, Geografía y Ciencias Sociales.</p>
+    <div class="sellos" aria-label="Sello formativo ODS"><span>Sostenibilidad</span><span>Ciudadanía</span><span>Inclusión</span><span>Territorio y comprensión sistémica</span><span>Transformación</span><span>Resiliencia</span></div>
+    <div class="tbl"><table>
+      <thead><tr><th>Desempeño</th><th>Subdesempeños</th><th>Estándares 2023</th></tr></thead>
+      <tbody>
+        <tr><td>1. Comprender el aprendizaje y el contexto de los estudiantes para fundamentar decisiones pedagógicas pertinentes.</td><td>1. Comprender a sus estudiantes y sus contextos.</td><td class="num">1</td></tr>
+        <tr><td>2. Movilizar saberes disciplinares, didácticos y curriculares para diseñar experiencias de aprendizaje pertinentes y coherentes.</td><td>2. Movilizar conocimiento disciplinar, didáctico y curricular.<br>3. Planificar experiencias de aprendizaje.</td><td class="num">2 y 3</td></tr>
+        <tr><td>3. Conducir procesos de enseñanza que promuevan aprendizajes profundos, participación e inclusión.</td><td>4. Implementar enseñanza efectiva.<br>6. Promover pensamiento crítico, creativo y metacognitivo.<br>7. Generar ambientes respetuosos, inclusivos y organizados.</td><td class="num">5, 6, 7 y 8</td></tr>
+        <tr><td>4. Evaluar el aprendizaje y utilizar evidencia para ajustar la enseñanza y mejorar la propia práctica.</td><td>5. Evaluar, retroalimentar y ajustar.<br>8. Analizar y mejorar la propia práctica.</td><td class="num">4, 9 y 11</td></tr>
+        <tr><td>5. Ejercer la profesión docente de manera ética, reflexiva y colaborativa, contribuyendo al aprendizaje y al mejoramiento de la comunidad educativa.</td><td>9. Actuar ética y profesionalmente.<br>10. Colaborar con la comunidad educativa.</td><td class="num">10 y 12</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">Pendiente: definir cómo se evidencia el sello ODS en los indicadores de cada desempeño.</p>
+  </section>
+
+  <section id="avatares">
+    <div class="tag">Vista 03</div>
+    <h2>Tres avatares de ingreso</h2>
+    <p>Seis de cada diez personas de la población potencial son docentes de otra especialidad o nivel. Los tres avatares suman el 93,3 % de los casos revisados; el 6,7 % restante no está caracterizado.</p>
+    <div class="pop">
+      <div class="bar" role="img" aria-label="Distribución de la población potencial: avatar 1, 60 %; avatar 2, 22 %; avatar 3, 11,3 %; sin caracterizar, 6,7 %">
+        <div class="b1">Avatar 1 · 60 %</div><div class="b2">22 %</div><div class="b3">11,3 %</div><div class="b4"></div>
+      </div>
+    </div>
+    <div class="avatares">
+      <article class="av"><div class="pct">60 %</div><h3>Avatar 1. Docente de otra especialidad o nivel</h3><p class="need">Necesita ampliar y completar su desempeño profesional para Educación Básica.</p></article>
+      <article class="av"><div class="pct">22 %</div><h3>Avatar 2. Profesional o licenciado disciplinar</h3><p class="need">Necesita mayor intensidad pedagógica, didáctica y clínica.</p></article>
+      <article class="av"><div class="pct">11,3 %</div><h3>Avatar 3. Profesional del campo educativo afín</h3><p class="need">Necesita fortalecimiento disciplinar y didáctico específico de Educación Básica.</p></article>
+    </div>
+    <p class="note">Lo que cada persona puede demostrar al ingresar debe verificarse con evidencia de entrada y no presumirse por su título o experiencia.</p>
+  </section>
+
+  <section id="opciones">
+    <div class="tag">Vista 04</div>
+    <h2>Opciones de perfil de ingreso, duración y malla</h2>
+    <p>La duración depende de cuánta formación pedagógica traen quienes ingresan. La UDD, dirigida a docentes ya formados, dura 2 años; la UMCE, dirigida a profesionales que ejercen sin formación pedagógica, dura 3 años. Ambas son b-learning y otorgan Licenciatura en Educación y título de Profesor/a de Educación Básica.</p>
+    <p class="note">Las duraciones son referencias para la discusión, no cálculos de créditos; deben contrastarse con la matriz normativa y la factibilidad USS.</p>
+    <div class="opciones">
+      <article class="op actual">
+        <span class="pill">Propuesta actual</span>
+        <div class="letra">Opción A</div>
+        <h3>Ingreso amplio</h3>
+        <div class="cover"><div class="track"><i style="flex:60;background:var(--navy)"></i><i style="flex:22;background:var(--azul)"></i><i style="flex:11.3;background:var(--dorado)"></i><i style="flex:6.7"></i></div><small>Avatares 1, 2 y 3 · 93,3 % de la población</small></div>
+        <dl><div><dt>Duración de referencia</dt><dd>Diferenciada: 2 años para quienes ya tienen formación pedagógica; hasta 3 años para el avatar 2.</dd></div><div><dt>Malla</dt><dd>Tronco común, reconocimiento de aprendizajes previos y módulos de nivelación pedagógica y clínica para el avatar 2.</dd></div><div><dt>Ventajas</dt><dd>Mayor cobertura regional; responde también a quienes ejercen con autorización sin título pedagógico.</dd></div>
+        <div><dt>Exigencias</dt><dd>Diagnóstico robusto, reconocimiento de aprendizajes previos y tres trayectorias; mayor complejidad de gestión y costos.</dd></div>
+        <div><dt>Referente</dt><dd>Combina rasgos de UMCE y UDD.</dd></div></dl>
+      </article>
+      <article class="op">
+        <div class="letra">Opción B</div>
+        <h3>Focalizado en docentes</h3>
+        <div class="cover"><div class="track"><i style="flex:60;background:var(--navy)"></i><i style="flex:40"></i></div><small>Avatar 1 · 60 % de la población</small></div>
+        <dl><div><dt>Duración de referencia</dt><dd>2 años (referente UDD).</dd></div><div><dt>Malla</dt><dd>Malla única centrada en lo propio de Básica: didácticas de las cuatro áreas, práctica y sello ODS.</dd></div><div><dt>Ventajas</dt><dd>Construye sobre una formación pedagógica existente; trayectoria más corta y homogénea.</dd></div>
+        <div><dt>Exigencias</dt><dd>Deja fuera a quienes ejercen con autorización sin título pedagógico.</dd></div>
+        <div><dt>Referente</dt><dd>UDD: docentes de Media, Diferencial o Parvularia; 2 años, b-learning.</dd></div></dl>
+      </article>
+      <article class="op">
+        <div class="letra">Opción C</div>
+        <h3>Docentes y campo educativo afín</h3>
+        <div class="cover"><div class="track"><i style="flex:60;background:var(--navy)"></i><i style="flex:22"></i><i style="flex:11.3;background:var(--dorado)"></i><i style="flex:6.7"></i></div><small>Avatares 1 y 3 · 71,3 % de la población</small></div>
+        <dl><div><dt>Duración de referencia</dt><dd>2 años, con nivelación disciplinar-didáctica para el avatar 3 por dimensionar.</dd></div><div><dt>Malla</dt><dd>Malla única con trayectoria de refuerzo disciplinar.</dd></div><div><dt>Ventajas</dt><dd>Población con experiencia educativa; dos trayectorias.</dd></div>
+        <div><dt>Exigencias</dt><dd>Excluye al avatar 2, que requiere la mayor intensidad pedagógica y clínica.</dd></div>
+        <div><dt>Referente</dt><dd>Intermedia entre UMCE y UDD.</dd></div></dl>
+      </article>
+    </div>
+    <p class="note">Referentes internacionales: el Graduate Diploma in Teaching (Primary) de la University of Auckland y el Master of Teaching (Primary) de la University of Melbourne, este último de 2 años a tiempo completo, están dirigidos a graduados e integran el estudio académico con presencia sostenida en escuelas y formación clínica.</p>
+  </section>
+
+  <section id="implicancias">
+    <div class="tag">Vista 05</div>
+    <h2>Implicancias para el diseño</h2>
+    <p>Cuantos más avatares ingresen, más trayectorias deberá sostener el programa, aunque el punto de llegada sea siempre el mismo.</p>
+    <div class="flujo" role="img" aria-label="Flujo de trayectorias diferenciadas hacia un mismo perfil de egreso">
+      <div class="fila"><div class="nodo">Avatar 1</div><div class="nodo">Avatar 2</div><div class="nodo">Avatar 3</div></div>
+      <div class="flecha">↓</div>
+      <div class="nodo"><b>Diagnóstico de entrada basado en evidencia</b>5 desempeños y 10 subdesempeños comunes</div>
+      <div class="flecha">↓</div>
+      <div class="fila"><div class="nodo"><b>Reconocimiento</b>de lo ya demostrado</div><div class="nodo"><b>Formación diferenciada</b>en las brechas detectadas</div></div>
+      <div class="flecha">↓</div>
+      <div class="nodo">Práctica deliberada, retroalimentación y nuevos intentos</div>
+      <div class="flecha">↓</div>
+      <div class="nodo meta-final">Mismo perfil de egreso</div>
+    </div>
+    <p>Estado del diseño frente a los cinco principios acordados:</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Principio</th><th>Estado</th><th>Qué falta</th></tr></thead>
+      <tbody>
+        <tr><td>Desarrollo profesional conducente a título, no pedagogía regular comprimida</td><td><span class="estado parcial">Parcial</span></td><td>Hacer explícitos el diagnóstico, el reconocimiento y las trayectorias desde la experiencia previa.</td></tr>
+        <tr><td>Estándar común de egreso y trayectorias diferenciadas</td><td><span class="estado parcial">Parcial-alto</span></td><td>Operacionalizar el diagnóstico de entrada y las reglas de reconocimiento y progresión.</td></tr>
+        <tr><td>Práctica clínica y problemas auténticos como articuladores</td><td><span class="estado ok">Cumplido</span></td><td>Mantener casos, simulaciones, microenseñanza, aula real y reimplementación.</td></tr>
+        <tr><td>Pocas capacidades prioritarias, con feedback y nuevos intentos</td><td><span class="estado ok">Cumplido</span></td><td>Conservar el foco y las reglas de práctica deliberada.</td></tr>
+        <tr><td>Decisiones basadas en datos, normativa y factibilidad</td><td><span class="estado parcial">Parcial</span></td><td>Cerrar la matriz normativa y el análisis de carga, modalidad, práctica, dotación y costos.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="preguntas">
+    <div class="tag">Vista 06</div>
+    <h2>Decisiones para retroalimentar</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Decisión</th><th>Alternativas</th></tr></thead>
+      <tbody>
+        <tr><td>Avatar o avatares del perfil de ingreso</td><td>A (avatares 1, 2 y 3), B (avatar 1) o C (avatares 1 y 3)</td></tr>
+        <tr><td>Duración del programa</td><td>2 años, 3 años o diferenciada por trayectoria</td></tr>
+        <tr><td>Perfil de egreso con sello ODS</td><td>Aprobar tal como está o ajustar</td></tr>
+        <tr><td>Criterios institucionales a considerar</td><td>Admisión, modalidad, créditos u otros</td></tr>
+      </tbody>
+    </table></div>
+    <h3 style="font-size:20px;margin-top:8px">Próximos pasos</h3>
+    <ul class="pasos">
+      <li>Fijar la duración del programa y elaborar la malla conforme a los avatares definidos: tronco común, reconocimiento de aprendizajes previos y módulos de nivelación cuando corresponda.</li>
+      <li>Cerrar la matriz normativa y el análisis de factibilidad (carga, modalidad, práctica, dotación y costos).</li>
+      <li>Diseñar el diagnóstico de entrada y el protocolo de reconocimiento de aprendizajes previos, con evidencias, umbrales y rúbricas comunes.</li>
+      <li>Definir los indicadores que evidencian el sello ODS en cada desempeño.</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer><div class="wrap">Fuente: Ruta de trabajo ADDIE, Programa Advance, versión del 16 de septiembre de 2026. Facultad de Educación, Universidad San Sebastián.</div></footer>
+
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('nav.vistas a'));
+  if(!('IntersectionObserver' in window))return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(l){l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id)})}})},{rootMargin:'-40% 0px -55% 0px'});
+  document.querySelectorAll('main section').forEach(function(s){io.observe(s)});
+})();
+</script>
+</body>
+</html>
